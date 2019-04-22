@@ -43,7 +43,14 @@ def turn(board)
       puts "Invalid Move."
       invalid_input = true
     else
-      return input
+      input_to_index(input)
+      valid_move?(board, index)
+      if valid_move?(board, index) == true
+        move(board, index, token = "X")
+        display_board(board)
+      else
+        invalid_input = true
+      end
     end
   end
 end
