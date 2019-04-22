@@ -20,22 +20,30 @@ def valid_move?(board, index)
   end
 end
 
-def input_to_index(position)
-  if !(1..9).include?(position.to_i)
-    puts "Invalid Move"
-  else
-    index = (position.to_i) - 1
-    return index
-  end
+def input_to_index(input)
+  index = (input.to_i) - 1
+  return index
 end
 
-def move( board, index, token = "X" )
 
+def move( board, index, token = "X" )
   board[index] = token
   return board
 end
 
 def turn(board)
-  puts "Please enter 1-9:"
+  invalid_input = true
 
+  while invalid_input
+    invalid_input = false
+    puts "Please enter 1-9:"
+    input = gets.strip
+
+    if !(1..9).include?(input.to_i)
+      puts "Invalid Move."
+      invalid_input = true
+    else
+      return input
+    end
+  end
 end
