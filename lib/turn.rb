@@ -21,8 +21,12 @@ def valid_move?(board, index)
 end
 
 def input_to_index(position)
-  index = (position.to_i) - 1
-  return index
+  if !(1..9).include?(position)
+    puts "Invalid Move"
+  else
+    index = (position.to_i) - 1
+    return index
+  end
 end
 
 def move( board, index, token = "X" )
